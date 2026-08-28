@@ -72,6 +72,12 @@ target_link_libraries(umicom_marketplace_module PUBLIC
 umicom_apply_warnings(umicom_marketplace_module)
 umicom_apply_sanitizers(umicom_marketplace_module)
 
+include(
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../framework/cmake/UmicomThinApplicationRuntime.cmake")
+umicom_extend_thin_application_runtime(
+    NAME "marketplace"
+    TARGET "umicom_marketplace_module")
+
 if(UMICOM_MARKETPLACE_BUILD_CONSOLE)
     add_executable(umicom-marketplace-console
         src/console/main.c)
